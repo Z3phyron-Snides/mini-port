@@ -6,18 +6,24 @@ const Container = styled.div`
   position: absolute;
   bottom: 15vh;
   right: 5%;
+
+  @media screen and (max-width: 900px) {
+    z-index: 999;
+    bottom: -10vh;
+  }
 `;
 const Button = styled(motion.button)`
   outline: none;
   border: none;
   padding: 10px 25px;
-  background: #000;
-  color: #fff;
+  background: ${({ open }) => (open ? "#fff" : "#000")};
+  color: ${({ open }) => (open ? "#000000" : "#fff")};
   font-size: 18px;
   letter-spacing: 1px;
   display: flex;
   align-items: center;
   gap: 5px;
+  z-index: 999;
 
   .icon {
     font-size: 20px;
@@ -41,6 +47,7 @@ const ContactBtn = (props) => {
   return (
     <Container>
       <Button
+        open={open}
         onClick={handleClick}
         initial={{ x: "100%", opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}

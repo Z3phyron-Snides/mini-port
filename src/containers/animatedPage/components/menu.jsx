@@ -11,12 +11,12 @@ import { AnimatePresence, motion } from "framer-motion";
 
 const Container = styled(motion.div)`
   display: flex;
-  padding: 7%;
+  flex-direction: column;
+  gap: 30px;
+  padding: 10%;
   position: fixed;
   top: 0;
   left: 0;
-  /* right: 0;
-  bottom: 0; */
   width: 100vw;
   height: 100%;
   background: #000;
@@ -24,7 +24,7 @@ const Container = styled(motion.div)`
   z-index: 998;
 
   @media screen and (max-width: 900px) {
-    padding: 20% 5% 0;
+    padding: 25% 10% 0;
   }
   @media screen and (max-width: 400px) {
     padding: 50% 5% 0;
@@ -34,11 +34,8 @@ const Container = styled(motion.div)`
 `;
 const ExtLinks = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  position: fixed;
-  right: 15%;
-  bottom: 25%;
+  /* flex-direction: column; */
+  gap: 20px;
   overflow: hidden;
 `;
 const IntLinks = styled.div`
@@ -46,6 +43,7 @@ const IntLinks = styled.div`
   flex-direction: column;
   gap: 30px;
   overflow: hidden;
+  margin-bottom: 20px;
 `;
 
 const Link = styled(motion.a)`
@@ -59,8 +57,8 @@ const Link = styled(motion.a)`
   gap: 20px;
   align-items: center;
 
-  @media screen and (max-width: 400px) {
-    font-size: 20px;
+  @media screen and (max-width: 900px) {
+    font-size: 35px;
   }
 `;
 const Image = styled(motion.div)`
@@ -147,38 +145,6 @@ const Menu = (props) => {
       transition={{ duration: 0.8, staggerChildren: 0.6 }}
     >
       <AnimatePresence>
-        <ExtLinks>
-          {socialLinks.map((link, i) => (
-            <Icon
-              key={link.url}
-              href={link.url}
-              initial={{
-                x: "-50px",
-                opacity: 0,
-              }}
-              animate={
-                open
-                  ? {
-                      x: 0,
-                      opacity: 1,
-                    }
-                  : {}
-              }
-              transition={{
-                type: "spring",
-                stiffness: 500,
-                damping: 50,
-                duration: 0.7,
-                delay: i * 0.4,
-              }}
-            >
-              {link.icon}
-            </Icon>
-          ))}
-        </ExtLinks>
-      </AnimatePresence>
-
-      <AnimatePresence>
         <IntLinks>
           {internalLinks.map(({ url, component, image }, i) => (
             <div
@@ -188,7 +154,7 @@ const Menu = (props) => {
               <Link
                 href={url}
                 initial={{
-                  x: "-50px",
+                  x: "-100%",
                   opacity: 0,
                 }}
                 animate={
@@ -208,7 +174,7 @@ const Menu = (props) => {
                   duration: 0.8,
                   delay: i * 0.6,
                 }}
-                onMouseOver={(event) =>
+                onMouseOver={() =>
                   setHoveredLink({
                     url,
                     image,
@@ -235,6 +201,37 @@ const Menu = (props) => {
             </div>
           ))}
         </IntLinks>
+      </AnimatePresence>
+      <AnimatePresence>
+        <ExtLinks>
+          {socialLinks.map((link, i) => (
+            <Icon
+              key={link.url}
+              href={link.url}
+              initial={{
+                y: "100%",
+                opacity: 0,
+              }}
+              animate={
+                open
+                  ? {
+                      y: 0,
+                      opacity: 1,
+                    }
+                  : {}
+              }
+              transition={{
+                type: "spring",
+                stiffness: 500,
+                damping: 50,
+                duration: 0.7,
+                delay: i * 0.4,
+              }}
+            >
+              {link.icon}
+            </Icon>
+          ))}
+        </ExtLinks>
       </AnimatePresence>
     </Container>
   );

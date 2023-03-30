@@ -3,8 +3,7 @@ import AnimateWord from "../../../utils/animateWords";
 
 const Container = styled.div`
   margin-top: auto;
-
-  font-size: clamp(25px, 5vw, 15vw);
+  font-size: clamp(24px, 5vw, 15vw);
   width: 70vw;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -32,7 +31,7 @@ const Intro = () => {
         text="Ricketts Rowland Oluwadamilare"
         variants={variants}
         transition={transition}
-        stagger={0.05}
+        stagger={0.5}
       />
     </Container>
   );

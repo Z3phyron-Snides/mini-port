@@ -7,7 +7,11 @@ const Container = styled.div`
   left: -2px;
   z-index: 999;
   transform: ${({ open }) => (open ? "rotate(90deg)" : "")};
-  transition: all .6s ease;
+  transition: all 0.6s ease;
+
+  @media screen and (max-width: 900px) {
+   display: none;
+  }
 `;
 
 const Button = styled(motion.button)`

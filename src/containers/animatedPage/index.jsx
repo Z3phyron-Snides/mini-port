@@ -11,7 +11,7 @@ import { useState } from "react";
 
 const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   position: relative;
 
   .content {
@@ -19,8 +19,9 @@ const Container = styled.div`
     border-left: 1px solid;
     height: 100vh;
     overflow: hidden;
-    @media screen and (max-width: 400px) {
-      margin-left: 10%;
+    @media screen and (max-width: 900px) {
+      margin-left: 0;
+      padding: 5%;
     }
 
    

@@ -5,13 +5,13 @@ const Container = styled.div`
   position: absolute;
   top: 10%;
   right: 5%;
-  font-size: clamp(15px, 2vw, 15vw);
+  font-size: clamp(15px, 2vw, 14vw);
   width: 50%;
   text-align: right;
   font-weight: 400;
   /* letter-spacing: 1px; */
-  @media screen and (max-width: 400px) {
-    width: 70%;
+  @media screen and (max-width: 600px) {
+    width: 80%;
     /* font-size: 20px; */
   }
 `;
@@ -40,7 +40,7 @@ const Header = () => {
         text="based in Lagos state, Nigeria."
         variants={variants}
         transition={transition}
-        stagger={0.05}
+        stagger={0.5}
       />
     </Container>
   );
